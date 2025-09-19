@@ -19,7 +19,7 @@ export default function Home() {
     setError(null)
     
     try {
-      const response = await axios.post('http://localhost:3001/api/onramp', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/onramp`, {
         amount: plans[selectedPlan].price,
         currency: 'USD',
         paymentMethod: paymentMethod,
