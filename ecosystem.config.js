@@ -8,12 +8,13 @@ module.exports = {
       exec_mode: "cluster",
       env: {
         NODE_ENV: "production",
-        PORT: 3001,
+        PORT: 3004,
       },
       env_production: {
         NODE_ENV: "production",
-        PORT: 3001,
+        PORT: 3004,
       },
+      env_file: "./backend/.env.production",
       // Logging
       log_file: "./logs/hostpay-backend.log",
       out_file: "./logs/hostpay-backend-out.log",
