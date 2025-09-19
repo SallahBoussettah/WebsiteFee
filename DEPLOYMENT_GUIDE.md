@@ -5,10 +5,18 @@ This guide covers deploying the HostPay backend to Oracle Cloud using PM2 proces
 ## Prerequisites
 
 - Oracle Cloud instance (Ubuntu 20.04+ recommended)
-- Domain name pointing to your Oracle Cloud IP
+- Domain name `api.1899rp.store` pointing to your Oracle Cloud IP
 - Git installed on the server
 - Node.js 18+ and npm installed
 - PM2 installed globally
+
+## DNS Configuration
+
+Before starting the deployment, ensure your DNS is configured:
+
+1. Create an A record for `api.1899rp.store` pointing to your Oracle Cloud instance public IP
+2. Wait for DNS propagation (can take up to 24 hours)
+3. Verify with: `nslookup api.1899rp.store`
 
 ## Server Setup
 
@@ -101,7 +109,7 @@ Add the following Nginx configuration:
 ```nginx
 server {
     listen 80;
-    server_name your-domain.com www.your-domain.com;
+    server_name api.1899rp.store;
     
     location / {
         proxy_pass http://localhost:3001;
@@ -124,7 +132,7 @@ sudo nginx -t
 sudo systemctl reload nginx
 
 # Obtain SSL certificate
-sudo certbot --nginx -d your-domain.com -d www.your-domain.com
+sudo certbot --nginx -d api.1899rp.store
 
 # Test automatic renewal
 sudo certbot renew --dry-run
