@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Success() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center">
@@ -16,12 +18,12 @@ export default function Success() {
           Thank you for your payment. Your transaction has been processed successfully.
         </p>
         
-        <a
+        <Link
           href="/"
           className="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors duration-200"
         >
           Return Home
-        </a>
+        </Link>
       </div>
     </div>
   )
