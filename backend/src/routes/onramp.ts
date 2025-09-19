@@ -50,9 +50,10 @@ router.post('/onramp', async (req: express.Request, res: express.Response) => {
       console.log('   2. Apply for Onramp access at: https://www.coinbase.com/developer-platform/products/onramp')
       console.log('🔄 Using demo mode for now...')
       
+      const frontendUrl = process.env.FRONTEND_URL || 'https://1899rp.store'
       const demoResponse = {
         id: `onramp_demo_${Date.now()}`,
-        paymentLink: `${process.env.FRONTEND_URL}/success?onramp=true&demo=true&session=${Date.now()}`,
+        paymentLink: `${frontendUrl}/success?onramp=true&demo=true&session=${Date.now()}`,
         amount: { amount, currency },
         asset: 'USDC',
         network: 'base',
@@ -93,9 +94,10 @@ router.post('/onramp', async (req: express.Request, res: express.Response) => {
       console.log('🔄 Onramp API failed, falling back to demo mode...')
       console.log('Error:', result.error)
       
+      const frontendUrl = process.env.FRONTEND_URL || 'https://1899rp.store'
       const demoResponse = {
         id: `onramp_demo_${Date.now()}`,
-        paymentLink: `${process.env.FRONTEND_URL}/success?onramp=true&demo=true&session=${Date.now()}`,
+        paymentLink: `${frontendUrl}/success?onramp=true&demo=true&session=${Date.now()}`,
         amount: { amount, currency },
         asset: 'USDC',
         network: 'base',
